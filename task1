@@ -1,0 +1,37 @@
+import requests
+import json
+
+#get list of users
+resp=requests.get("https://reqres.in/api/users?page=2")
+print(resp.json())
+print(resp.text)
+json_response=resp.json()
+print(json_response['total'])
+assert json_response['total']==12, "total not match"
+print(json_response['total_pages'])
+assert json_response['total_pages']==2,"total_pages not match"
+
+#create a user
+payload={
+    "name": "Babu",
+    "job": "Tester"
+}
+
+resp1=requests.post("https://reqres.in/api/users",data=payload)
+print(resp1)
+print(resp1.json())
+
+#update user
+payload1={
+    "name": "Babu",
+    "job": "Developer"
+}
+
+resp1=requests.put("https://reqres.in/api/users/2",data=payload1)
+print(resp1)
+print(resp1.json())
+
+
+
+
+
