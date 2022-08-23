@@ -1,0 +1,72 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import requests
+import time
+
+class orangehrm:
+    url = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"
+    soup = requests.get(url)
+    driver = webdriver.Firefox()
+#Login Admin
+    def Orangehrm_Login(self):
+        username = "Admin"
+        password = "admin123"
+        self.driver.get(self.url)
+        time.sleep(5)
+        username1 = self.driver.find_element(by=By.XPATH, value='//*[@id="app"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[1]/div/div[2]/input')
+        password1 = self.driver.find_element(by=By.XPATH, value='//*[@id="app"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[2]/div/div[2]/input')
+        login_button = self.driver.find_element(by=By.XPATH, value= '//*[@id="app"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[3]/button')
+        username1.send_keys(username)
+        password1.send_keys(password)
+        login_button.click()
+
+
+
+#Admin add new user
+
+        Adduser_button=self.driver.find_element(by=By.XPATH, value='//*[@id="app"]/div[1]/div[1]/header/div[2]/nav/ul/li[3]/a')
+        Adduser_button.click()
+
+
+        Name1 = self.driver.find_element(by=By.XPATH, value="/html/body/div/div[1]/div[2]/div[2]/div/div/form/div[1]/div[2]/div[1]/div[1]/div/div/div[2]/div[1]/div[2]/input")
+        Name1.send_keys("Example")
+        Name2 = self.driver.find_element(by=By.XPATH, value="/html/body/div/div[1]/div[2]/div[2]/div/div/form/div[1]/div[2]/div[1]/div[1]/div/div/div[2]/div[3]/div[2]/input")
+        Name2.send_keys("123")
+        Radio_button=self.driver.find_element(by=By.XPATH, value="/html/body/div/div[1]/div[2]/div[2]/div/div/form/div[1]/div[2]/div[2]/div/label/span")
+        Radio_button.click()
+
+        username3 = self.driver.find_element(by=By.XPATH, value="/html/body/div/div[1]/div[2]/div[2]/div/div/form/div[1]/div[2]/div[3]/div/div[1]/div/div[2]/input")
+        username3.send_keys("Example2212")
+        password3 = self.driver.find_element(by=By.XPATH, value="/html/body/div/div[1]/div[2]/div[2]/div/div/form/div[1]/div[2]/div[4]/div/div[1]/div/div[2]/input")
+        password3.send_keys("Exam@123")
+        confirm_password = self.driver.find_element(by=By.XPATH, value="/html/body/div/div[1]/div[2]/div[2]/div/div/form/div[1]/div[2]/div[4]/div/div[2]/div/div[2]/input")
+        confirm_password.send_keys("Exam@123")
+        save_button=self.driver.find_element(by=By.XPATH, value="/html/body/div/div[1]/div[2]/div[2]/div/div/form/div[2]/button[2]")
+        save_button.click()
+        prof_menu=self.driver.find_element(by=By.XPATH, value="/html/body/div/div[1]/div[1]/header/div[1]/div[2]/ul/li/span")
+        prof_menu.click()
+        time.sleep(2)
+        logout_button=self.driver.find_element(by=By.XPATH, value="/html/body/div/div[1]/div[1]/header/div[1]/div[2]/ul/li/ul/li[4]/a")
+        logout_button.click()
+
+#Admin created user login
+
+    def user_login(self):
+        username7 = "Example2212"
+        password7 = "Exam@123"
+        self.driver.get(self.url)
+        time.sleep(5)
+        username8 = self.driver.find_element(by=By.XPATH,
+                                             value='//*[@id="app"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[1]/div/div[2]/input')
+        password8 = self.driver.find_element(by=By.XPATH,
+                                             value='//*[@id="app"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[2]/div/div[2]/input')
+        login_button1 = self.driver.find_element(by=By.XPATH,
+                                                value='//*[@id="app"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[3]/button')
+        username8.send_keys(username7)
+        password8.send_keys(password7)
+        login_button1.click()
+
+
+s=orangehrm()
+s.Orangehrm_Login()
+s.user_login()
